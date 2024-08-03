@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageAI Pro - Advanced Image Processing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #f4f6f9;
+    --text-color: #2c3e50;
+    --card-background: #ffffff;
+    --border-color: #e0e0e0;
+    --caption-background: #ecf0f1;
+    --success-color: #27ae60;
+    --error-color: #e74c3c;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.upload-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.drop-zone {
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--background-color);
+}
+
+.drop-zone:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(52, 152, 219, 0.05);
+}
+
+.drop-zone p {
+    margin: 0;
+    font-size: 18px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.drop-zone .icon {
+    font-size: 48px;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+}
+
+.drop-zone input {
+    display: none;
+}
+
+.image-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.image-container {
+    flex: 1;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover {
+    transform: translateY(-5px);
+}
+
+.image-container img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.image-label {
+    padding: 16px;
+    background-color: var(--card-background);
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.caption-section {
+    background-color: var(--caption-background);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+}
+
+.caption-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+}
+
+.caption-content {
+    font-size: 18px;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.process-btn {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: var(--shadow);
+}
+
+.process-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.process-btn:active {
+    transform: translateY(0);
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.status-message {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.status-message.show {
+    opacity: 1;
+}
+
+.status-message.success {
+    color: var(--success-color);
+}
+
+.status-message.error {
+    color: var(--error-color);
+}
+
+.header_section {
+    background-color: var(--primary-color);
+    padding: 15px 0;
+    box-shadow: var(--shadow);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-item {
+    margin-left: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color);
+}
+
+.footer_section {
+    background-color: var(--text-color);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer_section p {
+    margin: 0;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .image-section {
+        flex-direction: column;
+    }
+
+    .image-container img {
+        height: 250px;
+    }
+
+    .process-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .drop-zone {
+        height: 200px;
+    }
+
+    .drop-zone p {
+        font-size: 16px;
+    }
+
+    .caption-title {
+        font-size: 18px;
+    }
+
+    .caption-content {
+        font-size: 16px;
+    }
+}
+
+.header_section {
+    background-color: var(--primary-color);
+    padding: 15px 0;
+    box-shadow: var(--shadow);
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar-toggler {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin-left: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color);
+}
+
+.nav_search-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 991px) {
+    .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-collapse {
+        display: none;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .navbar-collapse.show {
+        display: block;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-item {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .form-inline {
+        margin-top: 10px;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="../templates/index.html">
+              <span>
+                UpScale
+              </span>
+            </a>
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+              <span class="fa fa-bars"></span>
+            </button>
+            <div class="navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/index">Home</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/service">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/why">Why Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/team">Team</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                </li>
+                <li class="nav-item">
+                  <form class="form-inline">
+                    <button class="btn nav_search-btn" type="submit">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
+    <!-- End header section -->
+
+    <div class="container">
+        <header>
+            <h1>ImageAI Pro</h1>
+            <p class="subtitle">Advanced Image Processing and Caption Generation</p>
+        </header>
+        <div class="upload-section">
+            <div class="drop-zone" id="dropZone">
+                <div class="icon">📸</div>
+                <p>Drag & drop your image here<br>or click to upload</p>
+                <input type="file" id="fileInput" accept="image/*">
+            </div>
+        </div>
+        <div class="image-section">
+            <div class="image-container">
+                <img id="originalImage" src="/api/placeholder/400/300" alt="Original Image">
+                <div class="image-label">Original Image</div>
+            </div>
+            <div class="image-container">
+                <img id="processedImage" src="/api/placeholder/400/300" alt="Processed Image">
+                <div class="image-label">Processed Image</div>
+            </div>
+        </div>
+        <div class="caption-section">
+            <div class="caption-title">AI-Generated Caption</div>
+            <div class="caption-content" id="imageCaption">Upload an image and click "Process Image" to generate a caption.</div>
+        </div>
+        <a href="#" class="process-btn" id="processBtn">Process Image</a>
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p>Processing your image...</p>
+        </div>
+        <div class="status-message" id="statusMessage"></div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 ImageAI Pro. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const originalImage = document.getElementById('originalImage');
+const processedImage = document.getElementById('processedImage');
+const imageCaption = document.getElementById('imageCaption');
+const processBtn = document.getElementById('processBtn');
+const loading = document.getElementById('loading');
+const statusMessage = document.getElementById('statusMessage');
+
+dropZone.addEventListener('click', () => fileInput.click());
+
+document.querySelector('.navbar-toggler').addEventListener('click', function() {
+        document.querySelector('.navbar-collapse').classList.toggle('show');
+});
+
+dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.style.borderColor = 'var(--primary-color)';
+    dropZone.style.backgroundColor = 'rgba(74, 144, 226, 0.1)';
+});
+
+dropZone.addEventListener('dragleave', () => {
+    dropZone.style.borderColor = 'var(--border-color)';
+    dropZone.style.backgroundColor = 'var(--background-color)';
+});
+
+dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.style.borderColor = 'var(--border-color)';
+    dropZone.style.backgroundColor = 'var(--background-color)';
+    const file = e.dataTransfer.files[0];
+    handleFile(file);
+});
+
+fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    handleFile(file);
+});
+
+function handleFile(file) {
+    if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            originalImage.src = e.target.result;
+            originalImage.alt = file.name;
+            processedImage.src = '/api/placeholder/400/300';
+            imageCaption.textContent = 'Image uploaded. Click "Process Image" to generate caption.';
+            showStatusMessage('Image uploaded successfully!', 'success');
+        };
+        reader.readAsDataURL(file);
+    } else {
+        showStatusMessage('Please upload a valid image file.', 'error');
+    }
+}
+
+processBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (originalImage.src !== '/api/placeholder/400/300') {
+        loading.style.display = 'block';
+        processBtn.style.display = 'none';
+        // Simulate image processing and caption generation
+        setTimeout(() => {
+            processedImage.src = originalImage.src; // In reality, this would be the processed image
+            imageCaption.textContent = generateRandomCaption();
+            loading.style.display = 'none';
+            processBtn.style.display = 'block';
+            showStatusMessage('Image processed successfully!', 'success');
+        }, 2000);
+    } else {
+        showStatusMessage('Please upload an image before processing.', 'error');
+    }
+});
+
+function showStatusMessage(message, type) {
+    statusMessage.textContent = message;
+    statusMessage.className = `status-message show ${type}`;
+    setTimeout(() => {
+        statusMessage.className = 'status-message';
+    }, 3000);
+}
+
+function generateRandomCaption() {
+    const captions = [
+        "A breathtaking sunset paints the sky in vibrant hues of orange and purple, reflecting off the calm waters of a serene lake.",
+        "An adorable golden retriever puppy frolics in a lush green meadow, its tail wagging with unbridled joy and excitement.",
+        "A majestic cityscape showcases towering skyscrapers reaching towards the clouds, their windows glinting in the warm sunlight.",
+        "A tranquil forest path winds through ancient trees, dappled sunlight filtering through the canopy to create a magical atmosphere.",
+        "An exquisite gourmet dish is artfully presented on a sleek black plate, its colors and textures enticing the viewer's taste buds."
+    ];
+    return captions[Math.floor(Math.random() * captions.length)];
+}
+
+</script>
+</body>
+</html>
