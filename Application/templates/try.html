@@ -4,205 +4,207 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ImageAI Pro - Advanced Image Processing</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-:root {
+        :root {
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
-    --background-color: #f4f6f9;
+    --background-color: #ecf0f1;
     --text-color: #2c3e50;
-    --card-background: #ffffff;
-    --border-color: #e0e0e0;
-    --caption-background: #ecf0f1;
-    --success-color: #27ae60;
-    --error-color: #e74c3c;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    --accent-color: #e74c3c;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
+    margin: 0;
+    padding: 0;
     line-height: 1.6;
+}
+
+.header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.navbar-toggle {
+    display: none;
 }
 
 .container {
     max-width: 1200px;
-    margin: 40px auto;
-    padding: 40px;
-    background-color: var(--card-background);
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-}
-
-header {
-    text-align: center;
-    margin-bottom: 40px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
 }
 
 h1 {
-    font-size: 36px;
-    font-weight: 700;
+    font-size: 2.5rem;
     color: var(--primary-color);
-    margin-bottom: 8px;
+    text-align: center;
+    margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    font-size: 18px;
+    text-align: center;
     color: var(--text-color);
-    opacity: 0.8;
+    margin-bottom: 2rem;
 }
 
 .upload-section {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
 }
 
 .drop-zone {
-    width: 100%;
-    max-width: 400px;
-    height: 250px;
-    border: 2px dashed var(--border-color);
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    border: 2px dashed var(--primary-color);
+    border-radius: 10px;
+    padding: 2rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: var(--background-color);
+    transition: background-color 0.3s ease;
 }
 
 .drop-zone:hover {
-    border-color: var(--primary-color);
-    background-color: rgba(52, 152, 219, 0.05);
+    background-color: rgba(52, 152, 219, 0.1);
 }
 
-.drop-zone p {
-    margin: 0;
-    font-size: 18px;
-    color: var(--text-color);
-    text-align: center;
-}
-
-.drop-zone .icon {
-    font-size: 48px;
-    color: var(--primary-color);
-    margin-bottom: 16px;
-}
-
-.drop-zone input {
-    display: none;
+.upload-icon {
+    fill: var(--primary-color);
+    margin-bottom: 1rem;
 }
 
 .image-section {
     display: flex;
     justify-content: space-between;
-    gap: 40px;
-    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .image-container {
-    flex: 1;
-    background-color: var(--card-background);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
-}
-
-.image-container:hover {
-    transform: translateY(-5px);
+    flex: 1 1 calc(33.333% - 1rem);
+    min-width: 250px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .image-container img {
-    width: 100%;
-    height: 300px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
     object-fit: cover;
+    aspect-ratio: 4 / 3;
 }
 
 .image-label {
-    padding: 16px;
-    background-color: var(--card-background);
-    color: var(--text-color);
-    font-size: 16px;
-    font-weight: 500;
-    text-align: center;
-    border-top: 1px solid var(--border-color);
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.download-btn {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #27ae60;
 }
 
 .caption-section {
-    background-color: var(--caption-background);
-    border-radius: 12px;
-    padding: 24px;
-    text-align: center;
-    margin-bottom: 40px;
-    box-shadow: var(--shadow);
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .caption-title {
-    font-size: 20px;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--primary-color);
-    margin-bottom: 16px;
-}
-
-.caption-content {
-    font-size: 18px;
-    color: var(--text-color);
-    line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
 .process-btn {
     display: block;
     width: 200px;
     margin: 0 auto;
-    padding: 14px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 1rem;
+    background-color: var(--accent-color);
     color: white;
     border: none;
-    border-radius: 30px;
-    font-size: 18px;
+    border-radius: 5px;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    text-decoration: none;
-    box-shadow: var(--shadow);
+    transition: background-color 0.3s ease;
 }
 
 .process-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: #c0392b;
 }
 
-.process-btn:active {
-    transform: translateY(0);
-}
-
-.loading {
-    display: none;
+.loading, .status-message {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 1rem;
 }
 
 .loading-spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: var(--primary-color);
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary-color);
     border-radius: 50%;
     width: 40px;
     height: 40px;
     animation: spin 1s linear infinite;
-    margin: 0 auto 10px;
+    margin: 0 auto 1rem;
 }
 
 @keyframes spin {
@@ -210,407 +212,230 @@ h1 {
     100% { transform: rotate(360deg); }
 }
 
-.status-message {
-    margin-top: 20px;
-    text-align: center;
-    font-weight: 500;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.status-message.show {
-    opacity: 1;
-}
-
-.status-message.success {
-    color: var(--success-color);
-}
-
-.status-message.error {
-    color: var(--error-color);
-}
-
-.header_section {
+.footer {
     background-color: var(--primary-color);
-    padding: 15px 0;
-    box-shadow: var(--shadow);
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.navbar-brand {
     color: white;
-    font-size: 24px;
-    font-weight: 700;
-    text-decoration: none;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
 }
 
-.navbar-nav {
-    display: flex;
-    list-style-type: none;
+.social-links {
+    margin-top: 1rem;
 }
 
-.nav-item {
-    margin-left: 20px;
-}
-
-.nav-link {
+.social-link {
     color: white;
     text-decoration: none;
-    font-weight: 500;
+    margin: 0 0.5rem;
     transition: color 0.3s ease;
 }
 
-.nav-link:hover {
+.social-link:hover {
     color: var(--secondary-color);
-}
-
-.footer_section {
-    background-color: var(--text-color);
-    color: white;
-    padding: 40px 0;
-    text-align: center;
-}
-
-.footer_section p {
-    margin: 0;
-    font-size: 14px;
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 20px;
-    }
-
-    .image-section {
-        flex-direction: column;
-    }
-
-    .image-container img {
-        height: 250px;
-    }
-
-    .process-btn {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 28px;
-    }
-
-    .subtitle {
-        font-size: 16px;
-    }
-
-    .drop-zone {
-        height: 200px;
-    }
-
-    .drop-zone p {
-        font-size: 16px;
-    }
-
-    .caption-title {
-        font-size: 18px;
-    }
-
-    .caption-content {
-        font-size: 16px;
-    }
-}
-
-.header_section {
-    background-color: var(--primary-color);
-    padding: 15px 0;
-    box-shadow: var(--shadow);
-}
-
-.container-fluid {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    flex-wrap: wrap;
-}
-
-.navbar-brand {
-    color: white;
-    font-size: 24px;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.navbar-toggler {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.navbar-nav {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-item {
-    margin-left: 20px;
-}
-
-.nav-link {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-    color: var(--secondary-color);
-}
-
-.nav_search-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-/* Responsive styles */
-@media (max-width: 991px) {
-    .navbar-toggler {
+    .navbar-toggle {
         display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
     }
 
-    .navbar-collapse {
-        display: none;
-        width: 100%;
-        margin-top: 15px;
-    }
-
-    .navbar-collapse.show {
+    .navbar-toggle span {
         display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-color);
+        margin: 5px 0;
+        transition: all 0.3s ease;
     }
 
-    .navbar-nav {
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 60%;
+        height: calc(100% - 60px);
+        background-color: white;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        padding-top: 2rem;
+        transition: right 0.3s ease;
     }
 
-    .nav-item {
-        margin-left: 0;
-        margin-bottom: 10px;
+    .nav-links.active {
+        right: 0;
     }
 
-    .form-inline {
-        margin-top: 10px;
+    .image-container {
+        flex-basis: 100%;
     }
 }
     </style>
 </head>
 <body>
-    <header class="header_section">
-        <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg custom_nav-container">
-            <a class="navbar-brand" href="../templates/index.html">
-              <span>
-                UpScale
-              </span>
-            </a>
-            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-              <span class="fa fa-bars"></span>
+    <header class="header">
+        <nav class="navbar">
+            <a href="../templates/index.html" class="navbar-brand">ImageAI Pro</a>
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-            <div class="navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/index">Home</a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/service">Services</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/why">Why Us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/team">Team</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
-                </li>
-                <li class="nav-item">
-                  <form class="form-inline">
-                    <button class="btn nav_search-btn" type="submit">
-                      <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                  </form>
-                </li>
-              </ul>
+            <div class="nav-links">
+                <a href="/index" class="nav-link">Home</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/service" class="nav-link">Services</a>
+                <a href="/why" class="nav-link">Why Us</a>
+                <a href="/team" class="nav-link">Team</a>
+                <a href="#" class="nav-link">Login</a>
             </div>
-          </nav>
-        </div>
-      </header>
-    <!-- End header section -->
+        </nav>
+    </header>
 
-    <div class="container">
-        <header>
-            <h1>ImageAI Pro</h1>
-            <p class="subtitle">Advanced Image Processing and Caption Generation</p>
-        </header>
+    <main class="container">
+        <h1>ImageAI Pro</h1>
+        <p class="subtitle">Advanced Image Processing and Caption Generation</p>
+
         <div class="upload-section">
-            <div class="drop-zone" id="dropZone">
-                <div class="icon">📸</div>
+            <div id="dropZone" class="drop-zone">
+                <svg class="upload-icon" viewBox="0 0 24 24" width="64" height="64">
+                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+                </svg>
                 <p>Drag & drop your image here<br>or click to upload</p>
-                <input type="file" id="fileInput" accept="image/*">
+                <input type="file" id="fileInput" accept="image/*" hidden>
             </div>
         </div>
+
         <div class="image-section">
             <div class="image-container">
-                <img id="originalImage" src="/api/placeholder/400/300" alt="Original Image">
-                <div class="image-label">Original Image</div>
+                <img src="../static/images/white.png" id="originalImage" alt="Original Image">
+                <p class="image-label">Original Image</p>
             </div>
             <div class="image-container">
-                <img id="processedImage" src="/api/placeholder/400/300" alt="Processed Image">
-                <div class="image-label">Processed Image</div>
+                <img src="../static/images/white.png" id="processedImage1" alt="Processed Image 1">
+                <p class="image-label">Processed Image 1</p>
+                <a href="#" id="downloadBtn1" class="download-btn" download>Download</a>
+            </div>
+            <div class="image-container">
+                <img src="../static/images/white.png" id="processedImage2" alt="Processed Image 2">
+                <p class="image-label">Processed Image 2</p>
+                <a href="#" id="downloadBtn2" class="download-btn" download>Download</a>
             </div>
         </div>
+
         <div class="caption-section">
-            <div class="caption-title">AI-Generated Caption</div>
-            <div class="caption-content" id="imageCaption">Upload an image and click "Process Image" to generate a caption.</div>
+            <h2 class="caption-title">AI-Generated Caption</h2>
+            <p id="imageCaption" class="caption-content">
+                Upload an image and click "Process Image" to generate a caption.
+            </p>
         </div>
-        <a href="#" class="process-btn" id="processBtn">Process Image</a>
-        <div class="loading" id="loading">
+
+        <button id="processBtn" class="process-btn">Process Image</button>
+
+        <div id="loading" class="loading" style="display: none;">
             <div class="loading-spinner"></div>
             <p>Processing your image...</p>
         </div>
-        <div class="status-message" id="statusMessage"></div>
-    </div>
+
+        <div id="statusMessage" class="status-message"></div>
+    </main>
 
     <footer class="footer">
         <div class="container">
             <p>&copy; 2023 ImageAI Pro. All rights reserved.</p>
             <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">LinkedIn</a>
             </div>
         </div>
     </footer>
 
     <script>
-const dropZone = document.getElementById('dropZone');
-const fileInput = document.getElementById('fileInput');
-const originalImage = document.getElementById('originalImage');
-const processedImage = document.getElementById('processedImage');
-const imageCaption = document.getElementById('imageCaption');
-const processBtn = document.getElementById('processBtn');
-const loading = document.getElementById('loading');
-const statusMessage = document.getElementById('statusMessage');
+        document.addEventListener('DOMContentLoaded', function() {
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const originalImage = document.getElementById('originalImage');
+    const processedImage1 = document.getElementById('processedImage1');
+    const processedImage2 = document.getElementById('processedImage2');
+    const downloadBtn1 = document.getElementById('downloadBtn1');
+    const downloadBtn2 = document.getElementById('downloadBtn2');
+    const imageCaption = document.getElementById('imageCaption');
+    const processBtn = document.getElementById('processBtn');
+    const loading = document.getElementById('loading');
+    const statusMessage = document.getElementById('statusMessage');
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    const navLinks = document.querySelector('.nav-links');
 
-dropZone.addEventListener('click', () => fileInput.click());
+    navbarToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
 
-document.querySelector('.navbar-toggler').addEventListener('click', function() {
-        document.querySelector('.navbar-collapse').classList.toggle('show');
-});
+    dropZone.addEventListener('click', () => fileInput.click());
 
-dropZone.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    dropZone.style.borderColor = 'var(--primary-color)';
-    dropZone.style.backgroundColor = 'rgba(74, 144, 226, 0.1)';
-});
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('drag-over');
+    });
 
-dropZone.addEventListener('dragleave', () => {
-    dropZone.style.borderColor = 'var(--border-color)';
-    dropZone.style.backgroundColor = 'var(--background-color)';
-});
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('drag-over');
+    });
 
-dropZone.addEventListener('drop', (e) => {
-    e.preventDefault();
-    dropZone.style.borderColor = 'var(--border-color)';
-    dropZone.style.backgroundColor = 'var(--background-color)';
-    const file = e.dataTransfer.files[0];
-    handleFile(file);
-});
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('drag-over');
+        handleFiles(e.dataTransfer.files);
+    });
 
-fileInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    handleFile(file);
-});
+    fileInput.addEventListener('change', () => {
+        handleFiles(fileInput.files);
+    });
 
-function handleFile(file) {
-    if (file && file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            originalImage.src = e.target.result;
-            originalImage.alt = file.name;
-            processedImage.src = '/api/placeholder/400/300';
-            imageCaption.textContent = 'Image uploaded. Click "Process Image" to generate caption.';
-            showStatusMessage('Image uploaded successfully!', 'success');
-        };
-        reader.readAsDataURL(file);
-    } else {
-        showStatusMessage('Please upload a valid image file.', 'error');
+    function handleFiles(files) {
+        if (files.length > 0) {
+            const file = files[0];
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    originalImage.src = e.target.result;
+                    statusMessage.textContent = 'Image uploaded successfully. Click "Process Image" to continue.';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                statusMessage.textContent = 'Please upload an image file.';
+            }
+        }
     }
-}
 
-processBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (originalImage.src !== '/api/placeholder/400/300') {
+    processBtn.addEventListener('click', () => {
+        if (originalImage.src.includes('placeholder')) {
+            statusMessage.textContent = 'Please upload an image first.';
+            return;
+        }
+
         loading.style.display = 'block';
-        processBtn.style.display = 'none';
-        // Simulate image processing and caption generation
+        statusMessage.textContent = '';
+
+        // Simulating image processing and API call
         setTimeout(() => {
-            processedImage.src = originalImage.src; // In reality, this would be the processed image
-            imageCaption.textContent = generateRandomCaption();
+            // Replace these with actual API calls and image processing logic
+            processedImage1.src = originalImage.src;
+            processedImage2.src = originalImage.src;
+            imageCaption.textContent = 'This is an AI-generated caption for the uploaded image.';
+            
+            downloadBtn1.href = processedImage1.src;
+            downloadBtn2.href = processedImage2.src;
+
             loading.style.display = 'none';
-            processBtn.style.display = 'block';
-            showStatusMessage('Image processed successfully!', 'success');
+            statusMessage.textContent = 'Image processed successfully!';
         }, 2000);
-    } else {
-        showStatusMessage('Please upload an image before processing.', 'error');
-    }
+    });
 });
-
-function showStatusMessage(message, type) {
-    statusMessage.textContent = message;
-    statusMessage.className = `status-message show ${type}`;
-    setTimeout(() => {
-        statusMessage.className = 'status-message';
-    }, 3000);
-}
-
-function generateRandomCaption() {
-    const captions = [
-        "A breathtaking sunset paints the sky in vibrant hues of orange and purple, reflecting off the calm waters of a serene lake.",
-        "An adorable golden retriever puppy frolics in a lush green meadow, its tail wagging with unbridled joy and excitement.",
-        "A majestic cityscape showcases towering skyscrapers reaching towards the clouds, their windows glinting in the warm sunlight.",
-        "A tranquil forest path winds through ancient trees, dappled sunlight filtering through the canopy to create a magical atmosphere.",
-        "An exquisite gourmet dish is artfully presented on a sleek black plate, its colors and textures enticing the viewer's taste buds."
-    ];
-    return captions[Math.floor(Math.random() * captions.length)];
-}
-
-</script>
+    </script>
 </body>
 </html>
