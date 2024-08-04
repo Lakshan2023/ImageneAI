@@ -616,6 +616,11 @@ a:focus {
   padding: 0 15px;
 }
 
+.team_section .team_container .row {
+  display: flex;
+  justify-content: center;
+}
+
 .team_section .team_container .box {
   padding: 35px 0 0 0;
   border-radius: 5px;
@@ -675,8 +680,9 @@ a:focus {
 }
 
 /*team section end*/
+
 /* client section start */
-.client_section .heading_container {
+/* .client_section .heading_container {
   margin-bottom: 30px;
 }
 
@@ -771,9 +777,74 @@ a:focus {
 .client_section .owl-carousel .owl-nav .owl-prev:hover,
 .client_section .owl-carousel .owl-nav .owl-next:hover {
   color: #00204a;
-}
+} */
 
 /* client section end */
+
+
+/* contact section start */
+
+#contact {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+}
+
+#contact .container {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+#contact .text-primary-gradient {
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#contact h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 40px;
+}
+
+#contact .form-floating .form-control {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: none;
+}
+
+#contact .form-floating label {
+  color: #888888;
+}
+
+#contact .form-floating .form-control:focus {
+  border-color: #6c757d;
+  box-shadow: none;
+}
+
+#contact .form-floating textarea {
+  resize: none;
+}
+
+#contact .btn-primary-gradient {
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  border: none;
+  color: #ffffff;
+  transition: background 0.3s ease;
+}
+
+#contact .btn-primary-gradient:hover {
+  background: linear-gradient(to left, #6a11cb 0%, #2575fc 100%);
+}
+
+
+/* contact section end */
+
 .info_section {
   background-color: #00204a;
   color: #ffffff;
