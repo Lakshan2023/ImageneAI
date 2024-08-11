@@ -1,322 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark:bg-gray-900">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - ImagenAI</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --background-color: #ecf0f1;
-            --text-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --nav-background: white;
-            --card-background: white;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3498db',
+                        secondary: '#2ecc71',
+                        accent: '#e74c3c',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                },
+            },
         }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .dark-mode {
-            --background-color: #1a2533;
-            --text-color: #ecf0f1;
-            --nav-background: #2c3e50;
-            --card-background: #34495e;
-        }
-
-        .header {
-            background-color: var(--nav-background);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: background-color 0.3s;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .navbar-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-color);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--primary-color);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: var(--text-color);
-            margin-bottom: 2rem;
-        }
-
-        .about-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .about-content {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-content h2 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 2rem;
-        }
-
-        .social-links {
-            margin-top: 1rem;
-        }
-
-        .social-link {
-            color: white;
-            text-decoration: none;
-            margin: 0 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-link:hover {
-            color: var(--secondary-color);
-        }
-
-        .dark-mode-toggle {
-            display: flex;
-            align-items: center;
-        }
-
-        .dark-mode-checkbox {
-            display: none;
-        }
-
-        .dark-mode-label {
-            width: 50px;
-            height: 25px;
-            background-color: #ccc;
-            border-radius: 25px;
-            position: relative;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .dark-mode-label::before {
-            content: '';
-            position: absolute;
-            width: 21px;
-            height: 21px;
-            border-radius: 50%;
-            top: 2px;
-            left: 2px;
-            background-color: white;
-            transition: transform 0.3s ease;
-        }
-
-        .dark-mode-checkbox:checked + .dark-mode-label {
-            background-color: var(--primary-color);
-        }
-
-        .dark-mode-checkbox:checked + .dark-mode-label::before {
-            transform: translateX(25px);
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-wrap: wrap;
-            }
-
-            .navbar-brand {
-                flex: 1;
-            }
-
-            .navbar-toggle {
-                display: block;
-                order: 2;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                order: 3;
-                background-color: var(--nav-background);
-                padding: 1rem;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-link {
-                padding: 0.5rem 0;
-            }
-
-            .dark-mode-toggle {
-                margin-top: 1rem;
-            }
-
-            .about-section {
-                flex-direction: column;
-            }
-
-            .about-image, .about-content {
-                flex: 1 0 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 1rem;
-            }
-
-            h1 {
-                font-size: 1.75rem;
-            }
-
-            .subtitle {
-                font-size: 0.9rem;
-            }
-
-            .about-content h2 {
-                font-size: 1.5rem;
-            }
-
-            .social-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .social-link {
-                margin: 0.5rem;
-            }
-        }
-    </style>
+    </script>
 </head>
-<body>
-    <header class="header">
-      <nav class="navbar">
-        <a href="index.html" class="navbar-brand">ImagenAI</a>
-        <button class="navbar-toggle" id="navbarToggle">
-            <span class="hamburger-icon">&#9776;</span>
-        </button>
-        <div class="nav-links" id="navLinks">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="about.html" class="nav-link">About</a>
-            <a href="services.html" class="nav-link">Services</a>
-            <a href="why-us.html" class="nav-link">Why Us</a>
-            <a href="team.html" class="nav-link">Team</a>
-            <div class="dark-mode-toggle">
-                <input type="checkbox" id="darkModeToggle" class="dark-mode-checkbox">
-                <label for="darkModeToggle" class="dark-mode-label"></label>
+<body class="font-poppins bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50 transition-colors duration-300">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-semibold text-primary">ImagenAI</a>
+                <button id="navbarToggle" class="md:hidden text-gray-800 dark:text-gray-200 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+                <div id="navLinks" class="hidden md:flex md:items-center md:space-x-6">
+                    <a href="index.html" class="block py-2 md:inline-block md:py-0 hover:text-primary transition-colors duration-300">Home</a>
+                    <a href="about.html" class="block py-2 md:inline-block md:py-0 hover:text-primary transition-colors duration-300">About</a>
+                    <a href="services.html" class="block py-2 md:inline-block md:py-0 hover:text-primary transition-colors duration-300">Services</a>
+                    <a href="why-us.html" class="block py-2 md:inline-block md:py-0 hover:text-primary transition-colors duration-300">Why Us</a>
+                    <a href="team.html" class="block py-2 md:inline-block md:py-0 hover:text-primary transition-colors duration-300">Team</a>
+                    <div class="flex flex-col items-start md:items-center py-2 md:py-0">
+                        <span id="darkModeLabel" class="mb-1 text-xs">Dark Mode</span>
+                        <div class="relative">
+                            <input type="checkbox" id="darkModeToggle" class="hidden">
+                            <label for="darkModeToggle" class="cursor-pointer block w-10 h-5 md:w-12 md:h-6 bg-gray-400 rounded-full transition-colors duration-300">
+                                <div class="absolute left-1 top-1 w-3 h-3 md:w-4 md:h-4 bg-white rounded-full transition-transform duration-300 transform"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     </header>
 
-    <main class="container">
-        <h1>About Us</h1>
-        <p class="subtitle">Learn more about ImagenAI and our mission</p>
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl text-primary text-center mb-2">About Us</h1>
+        <p class="text-center text-gray-600 dark:text-gray-400 mb-8">Learn more about ImagenAI and our mission</p>
 
-        <section class="about-section">
-            <div class="about-image">
-                <img src="https://via.placeholder.com/600x400" alt="About ImageAI Pro">
+        <section class="flex flex-wrap gap-8 items-center mb-8">
+            <div class="flex-1 min-w-[300px]">
+                <img src="https://via.placeholder.com/600x400" alt="About ImageAI Pro" class="w-full h-auto rounded-lg">
             </div>
-            <div class="about-content">
-                <h2>Our Story</h2>
-                <p>ImagenAI was founded with a vision to revolutionize the way we interact with images using artificial intelligence. 
-                  Our team of passionate developers and AI enthusiasts came together to create a platform that makes advanced image processing accessible to everyone.</p>
-                <p>We believe in the power of AI to enhance creativity, improve efficiency, and open up new possibilities in various industries. 
-                  Our mission is to provide cutting-edge image processing tools that are both powerful and user-friendly.</p>
-                <p>With a focus on innovation and user experience, we continually strive to improve our services and stay at the forefront of AI technology. 
-                  Our team is dedicated to pushing the boundaries of what's possible with image processing and AI, always with the goal of empowering our users to achieve more.</p>
+            <div class="flex-1 min-w-[300px]">
+                <h2 class="text-3xl text-primary mb-4">Our Story</h2>
+                <p class="mb-4">ImagenAI was founded with a vision to revolutionize the way we interact with images using artificial intelligence. Our team of passionate developers and AI enthusiasts came together to create a platform that makes advanced image processing accessible to everyone.</p>
+                <p class="mb-4">We believe in the power of AI to enhance creativity, improve efficiency, and open up new possibilities in various industries. Our mission is to provide cutting-edge image processing tools that are both powerful and user-friendly.</p>
+                <p>With a focus on innovation and user experience, we continually strive to improve our services and stay at the forefront of AI technology. Our team is dedicated to pushing the boundaries of what's possible with image processing and AI, always with the goal of empowering our users to achieve more.</p>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
+    <footer class="bg-primary text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
             <p>&copy; 2023 ImagenAI. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#" class="social-link">Facebook</a>
-                <a href="#" class="social-link">Twitter</a>
-                <a href="#" class="social-link">Instagram</a>
-                <a href="#" class="social-link">LinkedIn</a>
+            <div class="mt-4 space-x-4">
+                <a href="#" class="hover:text-secondary transition-colors duration-300">Facebook</a>
+                <a href="#" class="hover:text-secondary transition-colors duration-300">Twitter</a>
+                <a href="#" class="hover:text-secondary transition-colors duration-300">Instagram</a>
+                <a href="#" class="hover:text-secondary transition-colors duration-300">LinkedIn</a>
             </div>
         </div>
     </footer>
@@ -324,67 +86,62 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const darkModeToggle = document.getElementById('darkModeToggle');
-            const body = document.body;
+            const darkModeLabel = document.getElementById('darkModeLabel');
+            const html = document.documentElement;
             const navbarToggle = document.getElementById('navbarToggle');
             const navLinks = document.getElementById('navLinks');
 
-            function updateColorScheme() {
-                const isDarkMode = body.classList.contains('dark-mode');
-                const root = document.documentElement;
-
-                if (isDarkMode) {
-                    root.style.setProperty('--background-color', '#1a2533');
-                    root.style.setProperty('--text-color', '#ecf0f1');
-                    root.style.setProperty('--nav-background', '#2c3e50');
-                    root.style.setProperty('--card-background', '#34495e');
-                } else {
-                    root.style.setProperty('--background-color', '#ecf0f1');
-                    root.style.setProperty('--text-color', '#2c3e50');
-                    root.style.setProperty('--nav-background', 'white');
-                    root.style.setProperty('--card-background', 'white');
-                }
-
-                // Update header
-                const header = document.querySelector('.header');
-                header.style.backgroundColor = `var(--nav-background)`;
-                header.style.borderBottom = isDarkMode ? '1px solid #4a6885' : '1px solid #e0e0e0';
-
-                // Update navbar links
-                document.querySelectorAll('.nav-link').forEach(el => {
-                    el.style.color = isDarkMode ? '#ecf0f1' : `var(--text-color)`;
-                });
-
-                // Update main content area
-                body.style.backgroundColor = `var(--background-color)`;
-                body.style.color = `var(--text-color)`;
+            // Function to update dark mode label
+            function updateDarkModeLabel(isDarkMode) {
+                darkModeLabel.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
             }
 
             // Dark mode toggle
             darkModeToggle.addEventListener('change', () => {
-                body.classList.toggle('dark-mode');
-                updateColorScheme();
+                html.classList.toggle('dark');
+                const isDarkMode = html.classList.contains('dark');
+                darkModeToggle.nextElementSibling.classList.toggle('bg-primary', isDarkMode);
+                darkModeToggle.nextElementSibling.firstElementChild.classList.toggle('translate-x-5', isDarkMode);
+                updateDarkModeLabel(isDarkMode);
             });
+
+            // Initialize dark mode label
+            updateDarkModeLabel(html.classList.contains('dark'));
 
             // Navbar toggle
             navbarToggle.addEventListener('click', function(event) {
                 event.stopPropagation();
-                navLinks.classList.toggle('active');
+                navLinks.classList.toggle('hidden');
+                navLinks.classList.toggle('flex');
+                navLinks.classList.toggle('flex-col');
+                navLinks.classList.toggle('absolute');
+                navLinks.classList.toggle('top-full');
+                navLinks.classList.toggle('left-0');
+                navLinks.classList.toggle('right-0');
+                navLinks.classList.toggle('bg-white');
+                navLinks.classList.toggle('dark:bg-gray-800');
+                navLinks.classList.toggle('shadow-md');
+                navLinks.classList.toggle('py-4');
+                navLinks.classList.toggle('px-4');
             });
 
             // Close menu when clicking outside
             document.addEventListener('click', function(event) {
-                if (navLinks.classList.contains('active') && !navLinks.contains(event.target) && event.target !== navbarToggle) {
-                    navLinks.classList.remove('active');
+                if (window.innerWidth < 768 && !navLinks.classList.contains('hidden') && !navLinks.contains(event.target) && event.target !== navbarToggle) {
+                    navbarToggle.click();
                 }
             });
 
-            // Prevent clicks inside the menu from closing it
-            navLinks.addEventListener('click', function(event) {
-                event.stopPropagation();
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 768) {
+                    navLinks.classList.remove('hidden', 'flex-col', 'absolute', 'top-full', 'left-0', 'right-0', 'bg-white', 'dark:bg-gray-800', 'shadow-md', 'py-4', 'px-4');
+                    navLinks.classList.add('flex');
+                } else {
+                    navLinks.classList.add('hidden');
+                    navLinks.classList.remove('flex');
+                }
             });
-
-            // Initial color scheme update
-            updateColorScheme();
         });
     </script>
 </body>
