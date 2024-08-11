@@ -54,16 +54,6 @@
         .hover-gradient:hover {
             background-position: right center;
         }
-
-         #team .grid {
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        }
-
-    #team .grid > div {
-        max-width: 95%;
-        margin-left: auto;
-        margin-right: auto;
-    }
     </style>
 </head>
 
@@ -71,7 +61,7 @@
     <header class="fixed w-full z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300" x-data="{ atTop: true }" @scroll.window="atTop = (window.pageYOffset > 50) ? false : true" :class="{ 'bg-opacity-90 backdrop-filter backdrop-blur-lg': !atTop }">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <a href="#" class="text-2xl font-bold gradient-text">ImageAI Pro</a>
+                <a href="#" class="text-2xl font-bold gradient-text">Imagene AI</a>
                 <nav class="hidden md:flex space-x-8">
                     <a href="#home" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Home</a>
                     <a href="#services" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Services</a>
@@ -106,7 +96,7 @@
     <main>
         <section id="home" class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text">ImageAI Pro</h1>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text">Imagene AI</h1>
                 <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">Advanced Image Processing and AI-Powered Solutions</p>
                 <a href="#services" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-transform transform hover:scale-105 hover-gradient">Explore Our Services</a>
             </div>
@@ -190,8 +180,8 @@
 <section id="team" class="py-20 bg-gray-100 dark:bg-gray-900">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Our Team</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center">
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300" style="display: flex; flex-direction: column;">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300" style="height: 450px; display: flex; flex-direction: column;">
                 <img src="../static/images/client2.jpg" alt="Dr. Emily Chen" class="w-full h-56 object-cover object-center">
                 <div class="p-6 flex-grow">
                     <h3 class="text-xl font-semibold mb-2">Dr. Emily Chen</h3>
@@ -210,10 +200,10 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300" style="display: flex; flex-direction: column;">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300" style="height: 450px; display: flex; flex-direction: column;">
                 <img src="../static/images/client1.jpg" alt="Alex Rodriguez" class="w-full h-56 object-cover object-center">
                 <div class="p-6 flex-grow">
-                    <h3 class="text-xl font-semibold mb-2">Alex Rodriguez</h3>
+                    <h3 class="text-xl font-semibold mb-2">Lakshan Cooray</h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-4">Lead Machine Learning Engineer</p>
                     <p class="text-gray-600 dark:text-gray-300 mb-4">M.S. in Artificial Intelligence from Stanford</p>
                     <div class="flex justify-center space-x-4">
