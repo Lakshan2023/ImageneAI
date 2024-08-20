@@ -11,13 +11,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <style>
-        [x-cloak] { display: none !important; }
+        [x-cloak] {
+            display: none !important;
+        }
+
         .gradient-text {
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             background-image: linear-gradient(45deg, #3B82F6, #10B981);
         }
+
         .custom-shape-divider-bottom-1650030623 {
             position: absolute;
             bottom: 0;
@@ -26,33 +30,46 @@
             overflow: hidden;
             line-height: 0;
         }
+
         .custom-shape-divider-bottom-1650030623 svg {
             position: relative;
             display: block;
             width: calc(100% + 1.3px);
             height: 150px;
         }
+
         .custom-shape-divider-bottom-1650030623 .shape-fill {
             fill: #1E40AF;
         }
+
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             letter-spacing: 0.02em;
         }
+
         .hover-scale {
             transition: transform 0.3s ease-in-out;
         }
+
         .hover-scale:hover {
             transform: scale(1.008);
         }
+
         .hover-gradient {
             background-image: linear-gradient(45deg, #3B82F6, #10B981);
             background-size: 200% 200%;
             transition: background-position 0.3s ease-in-out;
         }
+
         .hover-gradient:hover {
             background-position: right center;
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 90%;
+            }
         }
     </style>
 </head>
@@ -139,89 +156,85 @@
         </section>
 
         <section id="services" class="py-20 bg-white dark:bg-gray-800">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Our Services</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300" style="height: 400px; display: flex; flex-direction: column;">
-                <div class="p-6 flex-grow">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <h3 class="text-xl font-semibold mb-2">Image Enhancement</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Rediscover the details with our image enhancement tool. 
-                        Upscale low-resolution images and restore lost clarity, bringing your photos back to life.</p>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Our Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300" style="height: 400px; display: flex; flex-direction: column;">
+                        <div class="p-6 flex-grow">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <h3 class="text-xl font-semibold mb-2">Image Enhancement</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Rediscover the details with our image enhancement tool. Upscale low-resolution images and restore lost clarity, bringing your photos back to life.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300" style="height: 400px; display: flex; flex-direction: column;">
+                        <div class="p-6 flex-grow">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                            </svg>
+                            <h3 class="text-xl font-semibold mb-2">Image Captioning</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Instantly generate descriptive captions for any image. Our AI-powered technology accurately identifies and labels objects, scenes, and actions, providing informative and engaging text.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300" style="height: 400px; display: flex; flex-direction: column;">
+                        <div class="p-6 flex-grow">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-purple-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                            </svg>
+                            <h3 class="text-xl font-semibold mb-2">Image to Audio Description</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Transform images into spoken descriptions with our text-to-speech technology. Listen as our AI narrates the visual content, making your images accessible to everyone.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300" style="height: 400px; display: flex; flex-direction: column;">
-                <div class="p-6 flex-grow">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                    </svg>
-                    <h3 class="text-xl font-semibold mb-2">Image Captioning</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Instantly generate descriptive captions for any image. 
-                        Our AI-powered technology accurately identifies and labels objects, scenes, and actions, providing informative 
-                        and engaging text.</p>
-                </div>
-            </div>
-            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300" style="height: 400px; display: flex; flex-direction: column;">
-                <div class="p-6 flex-grow">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-purple-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-                    </svg>
-                    <h3 class="text-xl font-semibold mb-2">Image to Audio Description</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Transform images into spoken descriptions with our text-to-speech technology. 
-                        Listen as our AI narrates the visual content, making your images accessible to everyone.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<section id="team" class="py-20 bg-gray-100 dark:bg-gray-900">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Our Team</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300" style="height: 450px; display: flex; flex-direction: column;">
-                <img src="../static/images/client2.jpg" alt="Dr. Emily Chen" class="w-full h-56 object-cover object-center">
-                <div class="p-6 flex-grow">
-                    <h3 class="text-xl font-semibold mb-2">Dr. Emily Chen</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Chief AI Scientist</p>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Ph.D. in Computer Vision from MIT</p>
-                    <div class="flex justify-center space-x-4">
-                        <a href="#" class="text-blue-500 hover:text-blue-600">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
-                        </a>
-                        <a href="#" class="text-blue-700 hover:text-blue-800">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
-                        </a>
-                        <a href="#" class="text-blue-600 hover:text-blue-700">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-                        </a>
+        <section id="team" class="py-20 bg-gray-100 dark:bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Our Team</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300">
+                        <img src="../static/images/client2.jpg" alt="Dr. Emily Chen" class="w-full h-56 object-cover object-center">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-center">Dr. Emily Chen</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-center">Chief AI Scientist</p>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-center">Ph.D. in Computer Vision from MIT</p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="text-blue-500 hover:text-blue-600">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+                                </a>
+                                <a href="#" class="text-blue-700 hover:text-blue-800">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
+                                </a>
+                                <a href="#" class="text-blue-600 hover:text-blue-700">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300">
+                        <img src="../static/images/client1.jpg" alt="Lakshan Cooray" class="w-full h-56 object-cover object-center">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-center">Lakshan Cooray</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-center">Lead Machine Learning Engineer</p>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-center">M.S. in Artificial Intelligence from Stanford</p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="text-blue-500 hover:text-blue-600">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+                                </a>
+                                <a href="#" class="text-blue-700 hover:text-blue-800">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
+                                </a>
+                                <a href="#" class="text-blue-600 hover:text-blue-700">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-103 transition-transform duration-300" style="height: 450px; display: flex; flex-direction: column;">
-                <img src="../static/images/client1.jpg" alt="Alex Rodriguez" class="w-full h-56 object-cover object-center">
-                <div class="p-6 flex-grow">
-                    <h3 class="text-xl font-semibold mb-2">Lakshan Cooray</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Lead Machine Learning Engineer</p>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">M.S. in Artificial Intelligence from Stanford</p>
-                    <div class="flex justify-center space-x-4">
-                        <a href="#" class="text-blue-500 hover:text-blue-600">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
-                        </a>
-                        <a href="#" class="text-blue-700 hover:text-blue-800">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
-                        </a>
-                        <a href="#" class="text-blue-600 hover:text-blue-700">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <section id="contact" class="py-20 bg-gradient-to-r from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-900">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
