@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" x-data="{ darkMode: false, mobileMenuOpen: false }" :class="{ 'dark': darkMode }">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,88 +8,389 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <style>
         [x-cloak] {
             display: none !important;
+        }
+
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #3B82F6, #10B981);
         }
     </style>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased">
-    <header class="fixed w-full z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300" x-data="{ atTop: true }" @scroll.window="atTop = (window.pageYOffset > 50) ? false : true" :class="{ 'bg-opacity-90 backdrop-blur-lg': !atTop }">
+    <header class="fixed w-full z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300"
+        x-data="{ atTop: true }" @scroll.window="atTop = (window.pageYOffset > 50) ? false : true"
+        :class="{ 'bg-opacity-90 backdrop-blur-lg': !atTop }">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <a href="#" class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">ImagenAI</a>
+                <a href="#" class="flex items-center">
+                    <svg class="h-8 w-8 mr-2" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#3B82F6" />
+                                <stop offset="100%" style="stop-color:#10B981" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="2" width="36" height="36" rx="8" fill="url(#logo-gradient)" />
+                        <path d="M20 10 L10 30 L30 30 Z" fill="white" />
+                        <circle cx="20" cy="18" r="4" fill="white" />
+                    </svg>
+                    <span class="text-2xl font-bold gradient-text">ImagenAI</span>
+                </a>
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Home</a>
-                    <a href="#services" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Services</a>
-                    <a href="#team" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Team</a>
-                    <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Contact</a>
+                    <a href="#about"
+                        class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">About</a>
+                    <a href="#features"
+                        class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Features</a>
+                    <a href="#technology"
+                        class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Technology</a>
+                    <a href="#values"
+                        class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Our
+                        Values</a>
                 </nav>
                 <div class="flex items-center">
-                    <button @click="darkMode = !darkMode" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    <button @click="darkMode = !darkMode"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                         </svg>
-                        <svg x-show="darkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        <svg x-show="darkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                         </svg>
                     </button>
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="ml-4 md:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    <button @click="mobileMenuOpen = !mobileMenuOpen"
+                        class="ml-4 md:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
-        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" class="md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-800 shadow-lg py-2" x-cloak>
-            <a href="#home" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">Home</a>
-            <a href="#services" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">Services</a>
-            <a href="#team" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">Team</a>
-            <a href="#contact" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">Contact</a>
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 transform scale-90"
+            x-transition:enter-end="opacity-100 transform scale-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 transform scale-100"
+            x-transition:leave-end="opacity-0 transform scale-90"
+            class="md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-800 shadow-lg py-2" x-cloak>
+            <a href="#about"
+                class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">About</a>
+            <a href="#features"
+                class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">Features</a>
+            <a href="#technology"
+                class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">Technology</a>
+            <a href="#values"
+                class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">Our
+                Values</a>
         </div>
     </header>
 
-    <main>
-        <section id="about" class="py-20 bg-gray-100 dark:bg-gray-900">
+    <main class="pt-16">
+        <section id="about" class="py-20 bg-white dark:bg-gray-800">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 class="text-4xl md:text-5xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">About Us</h1>
-                <p class="text-center text-gray-600 dark:text-gray-300 mb-8">Learn more about ImagenAI and our mission</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="flex items-center justify-center">
-                        <img src="../static/images/about_us.jpg" alt="About Us" class="w-full h-64 object-cover object-center rounded-lg shadow-lg">
+                <h1 class="text-4xl md:text-5xl font-bold text-center mb-8 gradient-text">About ImagenAI</h1>
+                <p class="text-xl text-center text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
+                    ImagenAI is a cutting-edge AI-powered image processing platform designed to revolutionize the way
+                    businesses and creators work with visual content.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="about-content">
+                        <h2 class="text-2xl font-semibold mb-4">Our Mission</h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            At ImagenAI, we're committed to democratizing advanced image processing capabilities. Our
+                            goal is to empower businesses and individuals with state-of-the-art AI technology, enabling
+                            them to create, enhance, and analyze visual content with unprecedented ease and efficiency.
+                        </p>
+                        <h2 class="text-2xl font-semibold mb-4">Our Vision</h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            We envision a future where AI-driven image processing is accessible to everyone, fostering
+                            creativity, improving productivity, and opening new possibilities across various industries.
+                        </p>
                     </div>
-                    <div class="flex flex-col justify-center">
-                        <h2 class="text-2xl md:text-3xl font-semibold mb-4">Our Story</h2>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">ImagenAI was founded with a vision to revolutionize the way we interact with images using artificial intelligence. Our team of passionate developers and AI enthusiasts came together to create a platform that makes advanced image processing accessible to everyone.</p>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">We believe in the power of AI to enhance creativity, improve efficiency, and open up new possibilities in various industries. Our mission is to provide cutting-edge image processing tools that are both powerful and user-friendly.</p>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">With a focus on innovation and user experience, we continually strive to improve our services and stay at the forefront of AI technology. Our team is dedicated to pushing the boundaries of what's possible with image processing and AI, always with the goal of empowering our users to achieve more.</p>
+
+                    <div>
+                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
+                                </linearGradient>
+                                <clipPath id="hexClip">
+                                    <path d="M200 70 L305 125 L305 175 L200 230 L95 175 L95 125 Z" />
+                                </clipPath>
+                            </defs>
+
+                            <!-- Background rectangle -->
+                            <rect x="50" y="50" width="300" height="200" rx="20" fill="url(#grad1)" opacity="0.1" />
+
+                            <!-- Modern hexagon shape -->
+                            <g clip-path="url(#hexClip)">
+                                <rect x="95" y="70" width="210" height="160" fill="url(#grad1)" opacity="0.2" />
+                                <path d="M95 125 L305 125" stroke="url(#grad1)" stroke-width="2" opacity="0.5" />
+                                <path d="M95 175 L305 175" stroke="url(#grad1)" stroke-width="2" opacity="0.5" />
+                                <path d="M200 70 L200 230" stroke="url(#grad1)" stroke-width="2" opacity="0.5" />
+                            </g>
+
+                            <!-- Central design elements -->
+                            <circle cx="200" cy="150" r="50" fill="none" stroke="url(#grad1)" stroke-width="4"
+                                stroke-dasharray="10 5" />
+                            <path d="M170,150 Q200,100 230,150 T290,150" stroke="url(#grad1)" stroke-width="4"
+                                fill="none" />
+                            <path d="M170,150 Q200,200 230,150 T290,150" stroke="url(#grad1)" stroke-width="4"
+                                fill="none" />
+
+                            <!-- AI representation -->
+                            <g transform="translate(200 150)">
+                                <circle r="20" fill="#ffffff" />
+                                <path d="M-10,-10 L10,10 M-10,10 L10,-10" stroke="url(#grad1)" stroke-width="4"
+                                    stroke-linecap="round" />
+                            </g>
+
+                            <!-- Modern text styling -->
+                            <text x="200" y="245" font-family="Arial, sans-serif" font-size="24" fill="#3B82F6"
+                                text-anchor="middle" font-weight="bold">
+                                <tspan>Imagen</tspan>
+                                <tspan fill="#10B981">AI</tspan>
+                            </text>
+                        </svg>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-20 bg-gray-100 dark:bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Key Features</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div
+                        class="feature-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <svg class="w-16 h-16 mb-4 text-blue-500" viewBox="0 0 64 64"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="2" />
+                            <path d="M32 16v28M18 32h28" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                            <circle cx="32" cy="32" r="12" fill="none" stroke="currentColor" stroke-width="2" />
+                            <path d="M26 26l12 12M38 26l-12 12" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-4">AI-Powered Enhancement</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Automatically enhance image quality, adjust
+                            lighting, and correct colors using advanced AI algorithms.</p>
+                    </div>
+                    <div
+                        class="feature-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <svg class="w-16 h-16 mb-4 text-blue-500" viewBox="0 0 64 64"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="8" width="48" height="48" rx="8" fill="none" stroke="currentColor"
+                                stroke-width="2" />
+                            <path d="M16 16h32v32H16z" fill="none" stroke="currentColor" stroke-width="2" />
+                            <path d="M16 16l32 32M48 16L16 48" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                            <circle cx="32" cy="32" r="8" fill="none" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-4">Intelligent Segmentation</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Precisely identify and separate objects within
+                            images for easy manipulation and analysis.</p>
+                    </div>
+                    <div
+                        class="feature-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <svg class="w-16 h-16 mb-4 text-blue-500" viewBox="0 0 64 64"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 32h48" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            <path d="M16 24l-8 8 8 8M48 24l8 8-8 8" stroke="currentColor" stroke-width="2" fill="none"
+                                stroke-linecap="round" />
+                            <rect x="24" y="16" width="16" height="32" rx="4" fill="none" stroke="currentColor"
+                                stroke-width="2" />
+                            <path d="M28 24h8M28 32h8M28 40h8" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-4">Real-time Processing</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Process large volumes of images quickly with our
+                            optimized, scalable infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="technology" class="py-20 bg-white dark:bg-gray-800">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Our Technology</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="technology-content">
+                        <h3 class="text-2xl font-semibold mb-4">Advanced AI Models</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            ImagenAI utilizes state-of-the-art deep learning models, including Convolutional Neural
+                            Networks (CNNs) and Generative Adversarial Networks (GANs), to deliver unparalleled image
+                            processing capabilities.
+                        </p>
+                        <h3 class="text-2xl font-semibold mb-4">Scalable Cloud Infrastructure</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            Our platform is built on a robust, scalable cloud infrastructure, ensuring high availability
+                            and fast processing times for users across the globe.
+                        </p>
+                    </div>
+                    <div class="technology-image">
+                        <svg class="w-full h-auto" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="50" y="50" width="300" height="200" rx="20" fill="url(#grad2)" opacity="0.1" />
+                            <circle cx="200" cy="150" r="80" fill="none" stroke="url(#grad2)" stroke-width="4"
+                                stroke-dasharray="15 10" />
+                            <path d="M100,150 Q150,50 200,150 T300,150" stroke="url(#grad2)" stroke-width="4"
+                                fill="none" stroke-linecap="round" />
+                            <circle cx="100" cy="150" r="20" fill="#3B82F6" opacity="0.8" />
+                            <circle cx="200" cy="150" r="20" fill="#3B82F6" opacity="0.8" />
+                            <circle cx="300" cy="150" r="20" fill="#3B82F6" opacity="0.8" />
+                            <text x="100" y="190" font-family="Arial" font-size="14" fill="#3B82F6" text-anchor="middle"
+                                font-weight="bold">Input</text>
+                            <text x="200" y="190" font-family="Arial" font-size="14" fill="#3B82F6" text-anchor="middle"
+                                font-weight="bold">Process</text>
+                            <text x="300" y="190" font-family="Arial" font-size="14" fill="#3B82F6" text-anchor="middle"
+                                font-weight="bold">Output</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="values" class="py-20 bg-gray-100 dark:bg-gray-900">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Our Key Values</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div
+                        class="value-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <svg class="w-16 h-16 mb-4 text-blue-500" viewBox="0 0 64 64"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="2" />
+                            <path d="M32 16v16l8 8" stroke="currentColor" stroke-width="2" fill="none"
+                                stroke-linecap="round" />
+                            <circle cx="32" cy="32" r="4" fill="currentColor" />
+                            <path d="M32 4v8M60 32h-8M32 60v-8M4 32h8" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-4">Innovation</h3>
+                        <p class="text-gray-600 dark:text-gray-300">We constantly push the boundaries of AI technology
+                            to deliver cutting-edge solutions.</p>
+                    </div>
+                    <div
+                        class="value-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <svg class="w-16 h-16 mb-4 text-blue-500" viewBox="0 0 64 64"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32 8L8 56h48L32 8z" stroke="currentColor" stroke-width="2" fill="none" />
+                            <path d="M32 48v4" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                            <circle cx="32" cy="36" r="4" fill="currentColor" />
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-4">Reliability</h3>
+                        <p class="text-gray-600 dark:text-gray-300">We are committed to providing dependable and
+                            consistent results for our users.</p>
+                    </div>
+                    <div
+                        class="value-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <svg class="w-16 h-16 mb-4 text-blue-500" viewBox="0 0 64 64"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="8" width="48" height="48" rx="8" stroke="currentColor" stroke-width="2"
+                                fill="none" />
+                            <path d="M20 32h24M32 20v24" stroke="currentColor" stroke-width="2" />
+                            <circle cx="32" cy="32" r="12" stroke="currentColor" stroke-width="2" fill="none" />
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-4">User-Centric</h3>
+                        <p class="text-gray-600 dark:text-gray-300">We prioritize user experience and design our
+                            solutions with our customers in mind.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-800 text-gray-100 py-8">
+    <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="text-center md:text-left">
-                    <h2 class="text-xl font-bold mb-2">ImagenAI</h2>
-                    <p class="text-gray-400">© 2024 ImagenAI. All rights reserved.</p>
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-2xl font-bold gradient-text">ImagenAI</h3>
+                    <p class="mt-2 text-gray-400">Advanced Image Processing Solutions</p>
                 </div>
-                <div class="mt-4 md:mt-0">
-                    <ul class="flex space-x-4 justify-center md:justify-end">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
-                        <li><a href="#team" class="text-gray-400 hover:text-white transition-colors">Team</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <span class="sr-only">Facebook</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <span class="sr-only">Instagram</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <span class="sr-only">Twitter</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
+                            </path>
+                        </svg>
+                    </a>
                 </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+                © 2024 ImagenAI. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <script>
+        // Initialize AlpineJS
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('darkMode', () => ({
+                dark: false,
+                toggle() {
+                    this.dark = !this.dark;
+
+                    localStorage.setItem('darkMode', this.dark);
+                },
+                init() {
+                    this.dark = localStorage.getItem('darkMode') === 'true' || false;
+                }
+            }));
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
