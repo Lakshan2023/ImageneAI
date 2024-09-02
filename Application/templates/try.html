@@ -62,7 +62,7 @@
                 </nav>
                 <div class="flex items-center">
                     <button @click="darkMode = !darkMode"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 done">
                         <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -75,7 +75,7 @@
                         </svg>
                     </button>
                     <button @click="mobileMenuOpen = !mobileMenuOpen"
-                        class="ml-4 md:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        class="ml-4 md:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 done">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -219,10 +219,12 @@
     dropZone.addEventListener('dragover', (e) => {
         e.preventDefault();
         dropZone.classList.add('bg-blue-100', 'dark:bg-gray-700');
+        console.log("Dark");
     });
 
     dropZone.addEventListener('dragleave', () => {
         dropZone.classList.remove('bg-blue-100', 'dark:bg-gray-700');
+        console.log("Dark");
     });
 
     dropZone.addEventListener('drop', (e) => {
@@ -307,6 +309,11 @@ processBtn.addEventListener('click', () => {
         });
     });
 });
+
+tailwind.config = {            darkMode: 'class',        }  
+
+        const darkModeToggle = document.getElementById('done');        darkModeToggle.addEventListener('click', () => {            document.documentElement.classList.toggle('dark');        }); 
+
 
     </script>
 </body>
