@@ -1,366 +1,246 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" x-data="{ darkMode: false, mobileMenuOpen: false }" :class="{ 'dark': darkMode }">
 
 <head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" /> 
-  <meta name="author" content="" />
-  <link rel="shortcut icon" href="../static/images/favicon.png" type="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ImagenAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <style>
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #3B82F6, #10B981);
+        }
+        .team-card {
+            overflow: hidden;
+        }
+        .card-content {
+            transition: transform 0.3s ease-in-out;
+        }
+        .team-card:hover .card-content {
+            transform: translateX(-50%);
+        }
+        .social-icon {
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .social-icon:hover {
+            color: #3B82F6;
+            transform: scale(1.2);
+        }
 
-  <title> Finexo </title>
-
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
-
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-
-  <!--owl slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-
-  <!-- font awesome style -->
-  <link href="../static/css/font-awesome.min.css" rel="stylesheet" />
-
-  <!-- Custom styles for this template -->
-  <link href="../static/css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="../static/css/responsive.css" rel="stylesheet" />
-
+        .highlight:hover {
+            border-bottom: 2px solid #3B82F6;
+        }
+    </style>
 </head>
 
-<body class="sub_page">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased">
+    <header class="fixed w-full z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300"
+        x-data="{ atTop: true }" @scroll.window="atTop = (window.pageYOffset > 50) ? false : true"
+        :class="{ 'bg-opacity-90 backdrop-blur-lg': !atTop }">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="flex items-center">
+                    <svg class="h-8 w-8 mr-2" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#3B82F6" />
+                                <stop offset="100%" style="stop-color:#10B981" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="2" width="36" height="36" rx="8" fill="url(#logo-gradient)" />
+                        <path d="M20 10 L10 30 L30 30 Z" fill="white" />
+                        <circle cx="20" cy="18" r="4" fill="white" />
+                    </svg>
+                    <span class="text-2xl font-bold gradient-text">ImagenAI</span>
+                </a>
+                <nav class="hidden md:flex space-x-8">
 
-  <div class="hero_area">
-
-    <div class="hero_bg_box">
-      <div class="bg_img_box">
-        <img src="images/hero-bg.png" alt="">
-      </div>
-    </div>
-
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="/index">
-            <span>
-              Finexo
-            </span>
-          </a>
-
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class=""> </span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  ">
-              <li class="nav-item ">
-                <a class="nav-link" href="/index">Home </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about"> About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/service">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/why">Why Us</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/team">Team <span class="sr-only">(current)</span> </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
-              </li>
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </form>
-            </ul>
-          </div>
-        </nav>
-      </div>
+                    <a href="../templates/home.html"
+                        class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Home</a>
+                    <a href="../templates/about.html"
+                        class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">About Us</a>
+                    <a href="../templates/team.html"
+                        class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors highlight">Team</a>
+                    <a href="../templates/try.html"
+                        class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Try Us</a>
+                </nav>
+                <div class="flex items-center">
+                    <button @click="darkMode = !darkMode"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 done">
+                        <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                        <svg x-show="darkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </button>
+                    <button @click="mobileMenuOpen = !mobileMenuOpen"
+                        class="ml-4 md:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 done">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 transform scale-90"
+            x-transition:enter-end="opacity-100 transform scale-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 transform scale-100"
+            x-transition:leave-end="opacity-0 transform scale-90"
+            class="md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-800 shadow-lg py-2" x-cloak>
+            <a href="../templates/home.html"
+                class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">Home</a>
+            <a href="../templates/about.html"
+                class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">About Us</a>
+            <a href="../templates/team.html"
+                class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 highlight">Team</a>
+            <a href="../templates/try.html"
+                class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">Try Us</a>
+        </div>
     </header>
-    <!-- end header section -->
-  </div>
 
-  <!-- team section -->
-  <section class="team_section layout_padding">
-    <div class="container-fluid">
-      <div class="heading_container heading_center">
-        <h2 class="">
-          Our <span> Team</span>
-        </h2>
-      </div>
+    
+    <main class="container mx-auto px-4 py-24">
+        <h1 class="text-4xl md:text-5xl font-bold text-center mb-8 gradient-text">Our Team</h1>
+        <p class="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">Meet the talented individuals behind ImagenAI. Our diverse team of experts is dedicated to pushing the boundaries of AI-powered image processing.</p>
+        <div class="space-y-12 max-w-4xl mx-auto">
+            <div class="team-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                <div class="card-content flex" style="width: 200%;">
+                    <div class="w-full p-6 flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+                        <div class="md:flex-shrink-0">
+                            <img src="../static/images/team-1.jpeg" alt="Joseph Brown" class="w-48 h-48 rounded-full object-cover">
+                        </div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h2 class="text-2xl font-semibold text-blue-500 dark:text-blue-400 mb-2">Lakshan Cooray</h2>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">AI Enthusiast</p>
+                            <p class="mb-4 text-gray-700 dark:text-gray-300">Joseph leads our marketing efforts, bringing over a decade of experience in digital marketing and brand strategy. His innovative approaches have been key to ImagenAI's growth and market presence.</p>
+                            <div class="flex justify-center md:justify-start space-x-4">
+                                <a href="#" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full p-6 bg-gradient-to-r from-blue-500 to-green-500 text-white flex flex-col justify-center items-center">
+                        <h3 class="text-xl font-semibold mb-4">More About Lakshan</h3>
+                        <p class="text-center mb-6">Joseph's expertise in digital marketing has revolutionized our approach to customer engagement and brand positioning. His strategic vision continues to drive ImagenAI's success in the competitive AI landscape.</p>
+                        <a href="#" class="bg-white text-blue-500 px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">Full Profile</a>
+                    </div>
+                </div>
+            </div>
 
-      <div class="team_container">
-        <div class="row">
-          <div class="col-lg-3 col-sm-6">
-            <div class="box ">
-              <div class="img-box">
-                <img src="../static/images/team-1.jpg" class="img1" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Joseph Brown
-                </h5>
-                <p>
-                  Marketing Head
-                </p>
-              </div>
-              <div class="social_box">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                </a>
-              </div>
+            <div class="team-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                <div class="card-content flex" style="width: 200%;">
+                    <div class="w-full p-6 flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+                        <div class="md:flex-shrink-0">
+                            <img src="../static/images/team-3.JPG" alt="Earl Martinez" class="w-48 h-48 rounded-full object-cover">
+                        </div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h2 class="text-2xl font-semibold text-blue-500 dark:text-blue-400 mb-2">Pramuditha Wishwajith</h2>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">AI Enthusiast</p>
+                            <p class="mb-4 text-gray-700 dark:text-gray-300">Earl is our technical mastermind, with extensive experience in AI and machine learning. His expertise drives the innovation behind ImagenAI's cutting-edge image processing technologies.</p>
+                            <div class="flex justify-center md:justify-start space-x-4">
+                                <a href="#" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"><i class="fab fa-github"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"><i class="fab fa-medium"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full p-6 bg-gradient-to-r from-blue-500 to-green-500 text-white flex flex-col justify-center items-center">
+                        <h3 class="text-xl font-semibold mb-4">More About Pramuditha</h3>
+                        <p class="text-center mb-6">Earl's groundbreaking work in AI algorithms has set new industry standards. His leadership in our tech team ensures that ImagenAI remains at the forefront of AI-powered image processing innovation.</p>
+                        <a href="#" class="bg-white text-blue-500 px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">Full Profile</a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="box ">
-              <div class="img-box">
-                <img src="../static/images/team-2.jpg" class="img1" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Nancy White
-                </h5>
-                <p>
-                  Marketing Head
-                </p>
-              </div>
-              <div class="social_box">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="box ">
-              <div class="img-box">
-                <img src="../static/images/team-3.jpg" class="img1" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Earl Martinez
-                </h5>
-                <p>
-                  Marketing Head
-                </p>
-              </div>
-              <div class="social_box">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="box ">
-              <div class="img-box">
-                <img src="../static/images/team-4.jpg" class="img1" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Josephine Allard
-                </h5>
-                <p>
-                  Marketing Head
-                </p>
-              </div>
-              <div class="social_box">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- end team section -->
+    </main>
 
-  <!-- info section -->
-
-  <section class="info_section layout_padding2">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-3 info_col">
-          <div class="info_contact">
-            <h4>
-              Address
-            </h4>
-            <div class="contact_link_box">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Location
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Call +01 1234567890
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  demo@gmail.com
-                </span>
-              </a>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-2xl font-bold gradient-text">ImagenAI</h3>
+                    <p class="mt-2 text-gray-400">Advanced Image Processing Solutions</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <span class="sr-only">Facebook</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <span class="sr-only">Instagram</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <span class="sr-only">Twitter</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
             </div>
-          </div>
-          <div class="info_social">
-            <a href="">
-              <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-linkedin" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3 info_col">
-          <div class="info_detail">
-            <h4>
-              Info
-            </h4>
-            <p>
-              necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-2 mx-auto info_col">
-          <div class="info_link_box">
-            <h4>
-              Links
-            </h4>
-            <div class="info_links">
-              <a class="active" href="/index">
-                Home
-              </a>
-              <a class="" href="/about">
-                About
-              </a>
-              <a class="" href="/service">
-                Services
-              </a>
-              <a class="" href="/why">
-                Why Us
-              </a>
-              <a class="" href="/team">
-                Team
-              </a>
+            <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+                © 2024 ImagenAI. All rights reserved.
             </div>
-          </div>
         </div>
-        <div class="col-md-6 col-lg-3 info_col ">
-          <h4>
-            Subscribe
-          </h4>
-          <form action="#">
-            <input type="text" placeholder="Enter email" />
-            <button type="submit">
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- end info section -->
+    <script>
+        // Initialize AlpineJS
+        // document.addEventListener('alpine:init', () => {
+        //     Alpine.data('darkMode', () => ({
+        //         dark: false,
+        //         toggle() {
+        //             this.dark = !this.dark;
 
-  <!-- footer section -->
-  <section class="footer_section">
-    <div class="container">
-      <p>
-        &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
-      </p>
-    </div>
-  </section>
-  <!-- footer section -->
+        //             localStorage.setItem('darkMode', this.dark);
+        //         },
+        //         init() {
+        //             this.dark = localStorage.getItem('darkMode') === 'true' || false;
+        //         }
+        //     }));
+        // });
 
-  <!-- jQery -->
-  <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
-  <!-- popper js -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <!-- bootstrap js -->
-  <script type="text/javascript" src="../static/js/bootstrap.js"></script>
-  <!-- owl slider -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <!-- custom js -->
-  <script type="text/javascript" src="../static/js/custom.js"></script>
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-  </script>
-  <!-- End Google Map -->
+        tailwind.config = {            darkMode: 'class',        }  
 
+        const darkModeToggle = document.getElementById('done');        darkModeToggle.addEventListener('click', () => {            document.documentElement.classList.toggle('dark');        }); 
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
-
 </html>
